@@ -44,8 +44,9 @@ export default function ComingSoon() {
             We're crafting something beautiful
           </p>
           <p className="font-kohinoor text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-            The Jewellery Department is preparing to unveil our exquisite collection
-            of modern heirlooms and timeless pieces. Sign up to be notified when we launch.
+            We are so glad you are here! We can’t wait to welcome you into our glittering world. Affordable, fine jewellery for every one. Modern luxury that will excite and delight - The Jewellery Department showcases jewellery that transcends time and trends!
+
+            Sign up to be the first to view our collections from around the globe and receive a discount code from us for your first purchase.
           </p>
         </div>
 
