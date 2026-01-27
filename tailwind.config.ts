@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'tjd-green': '#1B5E3E',
+        'tjd-green': '#00382f',
         'tjd-green-dark': '#0F4A2E',
         'tjd-beige': '#F5F1EB',
         'marble-green': '#004F4C',

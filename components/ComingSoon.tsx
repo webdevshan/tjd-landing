@@ -6,30 +6,42 @@ import Image from 'next/image'
 
 export default function ComingSoon() {
   const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle email subscription
-    console.log('Coming soon email:', email)
-    setSubmitted(true)
-    setTimeout(() => {
+    setStatus('loading')
+
+    try {
+      const res = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      if (!res.ok) throw new Error('Failed to send')
+
+      setStatus('success')
       setEmail('')
-      setSubmitted(false)
-    }, 3000)
+    } catch (error) {
+      console.error(error)
+      setStatus('error')
+    }
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 flex items-center justify-center relative">
+    <div className="min-h-screen bg-tjd-green text-tjd-beige flex items-center justify-center relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        {/* Logo */}
+        {/* Logo - Filtered to be creamish white */}
         <div className="mb-12">
           <div className="relative w-full max-w-md mx-auto h-32 md:h-40">
             <Image
               src="/TheJewellery_Department_Logo_Final.webp"
               alt="The Jewellery Department"
               fill
-              className="object-contain"
+              className="object-contain brightness-0 invert sepia-[0.1]"
               priority
             />
           </div>
@@ -37,13 +49,13 @@ export default function ComingSoon() {
 
         {/* Main Content */}
         <div className="mb-12">
-          <h1 className="font-lamoric-rowen text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
+          <h1 className="font-lamoric-rowen text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-tjd-beige">
             Coming Soon
           </h1>
-          <p className="font-kohinoor text-xl md:text-2xl lg:text-3xl mb-4 text-gray-800">
+          <p className="font-kohinoor text-xl md:text-2xl lg:text-3xl mb-4 text-tjd-beige/90">
             We're crafting something beautiful
           </p>
-          <p className="font-kohinoor text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="font-kohinoor text-lg md:text-xl text-tjd-beige/80 max-w-2xl mx-auto">
             We are so glad you are here! We can’t wait to welcome you into our glittering world. Affordable, fine jewellery for every one. Modern luxury that will excite and delight - The Jewellery Department showcases jewellery that transcends time and trends!
 
             Sign up to be the first to view our collections from around the globe and receive a discount code from us for your first purchase.
@@ -52,12 +64,12 @@ export default function ComingSoon() {
 
         {/* Email Subscription Form */}
         <div className="max-w-md mx-auto">
-          {!submitted ? (
+          {status !== 'success' ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1 relative">
                   <Mail
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-tjd-green-dark"
                     size={20}
                   />
                   <input
@@ -66,30 +78,41 @@ export default function ComingSoon() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
-                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded focus:outline-none focus:border-tjd-green focus:bg-white text-gray-900 placeholder-gray-400 font-kohinoor"
+                    disabled={status === 'loading'}
+                    className="w-full pl-10 pr-4 py-3 bg-tjd-beige border-none rounded focus:outline-none focus:ring-2 focus:ring-tjd-beige/50 text-tjd-green-dark placeholder-tjd-green-dark/50 font-kohinoor"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="bg-tjd-green text-white hover:bg-tjd-green-dark px-8 py-3 font-kohinoor font-medium uppercase tracking-wide transition-colors rounded whitespace-nowrap"
+                  disabled={status === 'loading'}
+                  className="bg-tjd-green text-tjd-beige hover:bg-tjd-green-dark px-8 py-3 font-kohinoor font-medium uppercase tracking-wide transition-colors rounded whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed border border-tjd-beige"
                 >
-                  Notify Me
+                  {status === 'loading' ? 'Sending...' : 'Notify Me'}
                 </button>
               </div>
+              {status === 'error' && (
+                <p className="text-red-300 text-sm">Something went wrong. Please try again.</p>
+              )}
             </form>
           ) : (
             <div className="py-6">
               <div className="text-6xl mb-4">✨</div>
-              <p className="font-kohinoor text-xl font-medium text-gray-900">
+              <p className="font-kohinoor text-xl font-medium text-tjd-beige">
                 Thank you! We'll notify you when we launch.
               </p>
+              <button
+                onClick={() => setStatus('idle')}
+                className="mt-4 text-sm text-tjd-beige/70 hover:text-tjd-beige underline"
+              >
+                Sign up another email
+              </button>
             </div>
           )}
         </div>
 
         {/* Social Links or Additional Info */}
-        <div className="mt-16 pt-8 border-t border-gray-200">
-          <p className="font-kohinoor text-sm text-gray-600">
+        <div className="mt-16 pt-8 border-t border-tjd-beige/20">
+          <p className="font-kohinoor text-sm text-tjd-beige/60">
             Follow us for updates and behind-the-scenes glimpses
           </p>
         </div>
