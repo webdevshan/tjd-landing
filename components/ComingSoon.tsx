@@ -34,17 +34,20 @@ export default function ComingSoon() {
   return (
     <div className="min-h-screen bg-tjd-green text-tjd-beige flex items-center justify-center relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        {/* Logo - Filtered to be creamish white */}
-        <div className="mb-12">
-          <div className="relative w-full max-w-md mx-auto h-32 md:h-40">
+        {/* Logo Icon & Text */}
+        <div className="mb-12 flex flex-row items-center justify-center gap-4 md:gap-6">
+          <div className="relative w-16 h-16 md:w-24 md:h-24">
             <Image
-              src="/TheJewellery_Department_Logo_Final.webp"
+              src="/tjd_final.png"
               alt="The Jewellery Department"
               fill
-              className="object-contain brightness-0 invert sepia-[0.1]"
+              className="object-contain"
               priority
             />
           </div>
+          <p className="font-lamoric-rowen text-2xl md:text-3xl lg:text-4xl text-tjd-beige tracking-wider text-left">
+            THE JEWELLERY DEPT.
+          </p>
         </div>
 
         {/* Main Content */}
