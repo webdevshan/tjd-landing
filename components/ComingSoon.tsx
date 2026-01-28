@@ -35,8 +35,8 @@ export default function ComingSoon() {
     <div className="min-h-screen bg-tjd-green text-tjd-beige flex items-center justify-center relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         {/* Logo Icon & Text */}
-        <div className="mb-12 flex flex-row items-center justify-center gap-4 md:gap-6">
-          <div className="relative w-16 h-16 md:w-24 md:h-24">
+        <div className="mb-12 flex flex-row items-center justify-center gap-4">
+          <div className="relative w-20 h-20 shrink-0">
             <Image
               src="/tjd_final.png"
               alt="The Jewellery Department"
@@ -45,7 +45,7 @@ export default function ComingSoon() {
               priority
             />
           </div>
-          <p className="font-lamoric-rowen text-2xl md:text-3xl lg:text-4xl text-tjd-beige tracking-wider text-left">
+          <p className="font-lamoric-rowen text-2xl md:text-3xl lg:text-4xl text-tjd-beige tracking-wider text-left text-wrap">
             THE JEWELLERY DEPT.
           </p>
         </div>
