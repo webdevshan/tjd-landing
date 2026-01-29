@@ -50,17 +50,24 @@ export default function ComingSoon() {
 
         {/* Main Content */}
         <div className="mb-12">
-          <h1 className="font-lamoric-rowen text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-tjd-beige">
+          <h1 className="font-lamoric-rowen text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-tjd-beige">
             Coming Soon
           </h1>
-          <p className="font-kohinoor text-xl md:text-2xl lg:text-3xl mb-4 text-tjd-beige/90">
-            We're crafting something beautiful
+          <p className="font-kohinoor text-xl md:text-2xl lg:text-3xl mb-8 text-tjd-beige/90">
+            A beautiful world is taking shape.
           </p>
-          <p className="font-kohinoor text-lg md:text-xl text-tjd-beige/80 max-w-2xl mx-auto">
-            We are so glad you are here! We can’t wait to welcome you into our glittering world. Affordable, fine jewellery for every one. Modern luxury that will excite and delight - The Jewellery Department showcases jewellery that transcends time and trends!
-
-            Sign up to be the first to view our collections from around the globe and receive a discount code from us for your first purchase.
-          </p>
+          <div className="font-kohinoor text-lg md:text-xl text-tjd-beige/80 max-w-2xl mx-auto space-y-6">
+            <p>We’re so pleased you’re here.</p>
+            <p>
+              The Jewellery Department is an edit of considered, modern fine jewellery, pieces chosen for their elegance, longevity and quiet confidence. Thoughtfully designed to be worn every day, and treasured for years to come.
+            </p>
+            <p>
+              Our collections bring together timeless craftsmanship and contemporary design from around the globe. Effortless. Refined. Enduring.
+            </p>
+            <p>
+              Join our list to be among the first to discover our launch, and enjoy a special welcome gift for your first purchase.
+            </p>
+          </div>
         </div>
 
         {/* Email Subscription Form */}
